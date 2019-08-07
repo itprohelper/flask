@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  postgres:
+    restart: always
+    image: postgres:10
+    environment:
+      POSTGRES_USER: puser
+      POSTGRES_PASSWORD: ppass
+      POSTGRES_DB: pdatabase
+    volumes:
+      - ./pdata:/var/lib/postgresql/data
+
+    ports:
+    - "5432:5432"
+
+  app:
+    restart: always
+    build: .
+    volumes:
+    - .:/app
+    ports:
+    - 5000:5000
+
+volumes:
+  pdata:
+  app:
