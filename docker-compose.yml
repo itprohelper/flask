@@ -2,6 +2,7 @@ version: '3'
 
 services:
   postgres:
+    container_name: flask_db
     restart: always
     image: postgres:10
     environment:
@@ -15,6 +16,7 @@ services:
     - "5432:5432"
 
   app:
+    container_name: flask_app
     restart: always
     build: .
     volumes:
